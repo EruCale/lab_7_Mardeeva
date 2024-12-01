@@ -1,0 +1,693 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "121654b4-b8db-4cbe-9d9f-d27ab140ee07",
+   "metadata": {},
+   "source": [
+    "---\n",
+    "title: 'Лабораторна робота №7. Словники, кортежі. Обробка винятків (empty)'\n",
+    "description:\n",
+    "   Документ зроблено за допомогою [Quarto](https://quarto.org/)\n",
+    "author: \"&copy; [<span style='color: black;'> Мардєєва Діана </span>]), 2024\"\n",
+    "date: \"01.12.2024\"\n",
+    "lang: ukr\n",
+    "format:\n",
+    "  html:\n",
+    "    code-fold: true\n",
+    "    toc: true # меню\n",
+    "    toc_float: # спливаюче меню  \n",
+    "      collapsed: true # авто\n",
+    "      number_sections: true\n",
+    "jupyter: python3\n",
+    "---"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3ecd3f59-d965-46b8-9ebb-2274c9bc994f",
+   "metadata": {},
+   "source": [
+    "__Мета:__ _навчитися працювати зі структурами даних Кортеж та Словник. Навчитись обробляти основні типи винятків_"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "eed8fe9a-ae79-43bc-8af9-d58b66ed22c9",
+   "metadata": {},
+   "source": [
+    "## Робота зі словниками"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5ee27da0-da23-45a5-a10d-443f9ae4fce0",
+   "metadata": {},
+   "source": [
+    "### Приклад 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d4753d62-6b9c-4848-b61c-ca07bd1bbf60",
+   "metadata": {},
+   "source": [
+    "Створіть кортеж, який містить інформацію про результати іспитів з трьох предметів для студента (наприклад, математика, фізика та хімія). Виведіть на екран середній бал та максимальний бал."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "5042ad41-925b-4876-a772-d2c3ef594c3b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# results = (80, 75, 90)\n",
+    "\n",
+    "average_score = sum(results) / len(results)\n",
+    "max_score = max(results)\n",
+    "\n",
+    "print(f\"Середній бал: {average_score}\")\n",
+    "print(f\"Максимальний бал: {max_score}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "254fed27-e009-4639-8130-2fbea6e396ef",
+   "metadata": {},
+   "source": [
+    "Середній бал: 81.66666666666667\n",
+    "Максимальний бал: 90"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "2ac9a8a0-ba71-4a3b-b16e-750c6c4dcdd1",
+   "metadata": {},
+   "source": [
+    "У цьому коді ми створюємо кортеж 'results', який містить оцінки студента з трьох предметів. \n",
+    "Потім ми обчислюємо середній бал, використовуючи вбудовані функції 'sum' та 'len', та максимальний бал, використовуючи вбудовану функцію 'max'. Нарешті, ми виводимо ці значення на екран за допомогою функції print. Водночас ми продемонстрували один з варіантів форматованого виводу."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cf08696f-b06d-4c3c-89bf-2552362270c8",
+   "metadata": {},
+   "source": [
+    "### Приклад 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0cd7568d-ea5a-4c37-a839-90504e2973c7",
+   "metadata": {},
+   "source": [
+    "Створіть програму, яка буде обчислювати площу трикутника за трьома сторонами, які користувач введе з клавіатури. Збережіть введені користувачем значення за допомогою кортежів та виведіть їх на екран."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "8e86ef9e-d177-4d10-937b-f9fbebbc6a3b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a = float(input(\"Введіть довжину першої сторони трикутника: \"))\n",
+    "b = float(input(\"Введіть довжину другої сторони трикутника: \"))\n",
+    "c = float(input(\"Введіть довжину третьої сторони трикутника: \"))\n",
+    "\n",
+    "# обчислюємо півпериметр\n",
+    "p = (a + b + c) / 2\n",
+    "\n",
+    "# обчислюємо площу трикутника за формулою Герона\n",
+    "area = (p * (p - a) * (p - b) * (p - c)) ** 0.5\n",
+    "\n",
+    "# зберігаємо введені користувачем значення у кортеж\n",
+    "triangle_sides = (a, b, c)\n",
+    "\n",
+    "# виводимо на екран введені користувачем значення та площу трикутника\n",
+    "print(f\"Довжина сторін трикутника: {triangle_sides}\")\n",
+    "print(f\"Площа трикутника: {area}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1e9e1c9d-e96b-4abc-a81b-785050c4af2c",
+   "metadata": {},
+   "source": [
+    "Введіть довжину першої сторони трикутника:  1\n",
+    "Введіть довжину другої сторони трикутника:  2\n",
+    "Введіть довжину третьої сторони трикутника:  3\n",
+    "Довжина сторін трикутника: (1.0, 2.0, 3.0)\n",
+    "Площа трикутника: 0.0"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9bc3be1e-e830-4b8e-b345-88871ca12c09",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "У цьому прикладі ми використовуємо кортеж 'triangle_sides', щоб зберегти довжини трьох сторін трикутника, які введені користувачем з клавіатури."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "1421afb2-b52d-4577-88fe-e4791a93410f",
+   "metadata": {},
+   "source": [
+    "### Приклад 3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0dc0f92f-4f9e-41f5-b1aa-315b18a20b83",
+   "metadata": {},
+   "source": [
+    "Напишіть програму, яка змінює порядок елементів у кортежі. Користувач повинен ввести кортеж, а програма повинна вивести його елементи у зворотному порядку."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "17ead0c6-e5cb-4aaa-a4a2-759987124ddb",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "t = tuple(input(\"Введіть елементи кортежу, розділені комою: \").split(','))\n",
+    "\n",
+    "# змінюємо порядок елементів у кортежі\n",
+    "reversed_t = t[::-1]\n",
+    "\n",
+    "# виводимо зворотний порядок елементів на екран\n",
+    "print(f\"Зворотний порядок елементів кортежу: {reversed_t}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "18c8ac1c-2280-4b00-a597-69ff29e943bd",
+   "metadata": {},
+   "source": [
+    "Введіть елементи кортежу, розділені комою:  1, 2, 3, 4, 5\n",
+    "Зворотний порядок елементів кортежу: (' 5', ' 4', ' 3', ' 2', '1')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "4fbdd96e-f78f-4df4-98d4-1ba89eb7d2f8",
+   "metadata": {},
+   "source": [
+    "У цьому прикладі ми використовуємо оператор зрізу '[::]', щоб змінити порядок елементів у кортежі 't' на зворотний порядок. Потім ми виводимо на екран зворотний порядок елементів у новому кортежі 'reversed_t'.\n",
+    "\n",
+    "Наприклад, якщо користувач введе \"1,2,3,4,5\", програма виведе на екран: “Зворотний порядок елементів кортежу: '('5', '4', '3', '2', '1')'."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "09d992b8-5e68-44a3-81cd-909a19e47693",
+   "metadata": {},
+   "source": [
+    "### Завдання 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "e051c87d-d7bc-4f44-b8d2-1ed398ff706e",
+   "metadata": {},
+   "source": [
+    "Напишіть програму, яка створює кортеж зі списку чисел, а потім виводить на екран всі числа, які менші за задане число 'n'. Умова: користувач вводить число 'n', і щоб створити новий список 'result', який містить всі числа з кортежу, які менші за 'n', реалізувати за допомогою генератора списків"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e6e1528a-53b6-4574-bf5c-e38e5f76293a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "lessernumbers = [10, 3, 15, 7, 20, 5, 8]\n",
+    "numbers_tuple = tuple(lessernumbers)\n",
+    "n = int(input(\"Введіть число n для першого завдання: \"))\n",
+    "lesserresult = [num for num in numbers_tuple if num < n]\n",
+    "print(\"Числа менші за\", n, \":\", lesserresult)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "4135e118-7fae-401c-9aa9-5c0dc1b52052",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "Введіть число n для першого завдання: >? 28\n",
+    "Числа менші за 28 : [10, 3, 15, 7, 20, 5, 8]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "b3469f72-6978-426a-9e6d-f5e401094844",
+   "metadata": {},
+   "source": [
+    "### Завдання 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "73a12827-e720-4ae0-9961-63f860f1f36b",
+   "metadata": {},
+   "source": [
+    "Напишіть програму, яка створює кортеж з трьох елементів, які є рядками, та з’єднує їх в один рядок з комою як роздільником. Примітка: з’єднати рядки також можна за допомогою методу '.joint()'"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "db18be3a-4e48-477c-97f0-8c400fc65b8a",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "tuple_of_strings = (\"Надія\", \"Любов\", \"Радість\")\n",
+    "stringsresult = \",\".join(tuple_of_strings)\n",
+    "print(stringsresult)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "115d490e-a52e-4499-9f61-577a20b86ea9",
+   "metadata": {},
+   "source": [
+    "Надія,Любов,Радість"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5098209d-6765-4ad3-b4d1-e918b1988e3f",
+   "metadata": {},
+   "source": [
+    "### Завдання 3"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "cbf1610c-f7c0-4e7c-8e11-f99b428fb2d7",
+   "metadata": {},
+   "source": [
+    "Створіть словник, який містить інформацію про книги в бібліотеці. Ключами будуть назви книг, а значеннями - автори, рік видання та кількість сторінок. Виведіть на екран інформацію про книгу, введену користувачем."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "35bba652-7c21-41de-9e24-4745e9c1fcd6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "library = {\n",
+    "    \"Гаррі Поттер і філософський камінь\": {\n",
+    "        \"Автор\": \"Дж. К. Роулінг\",\n",
+    "        \"Рік\": 1869,\n",
+    "        \"Кількість сторінок\": 223\n",
+    "    },\n",
+    "    \"Дон Кіхот\": {\n",
+    "        \"Автор\": \"Мігель де Сервантес\",\n",
+    "        \"Рік\": 1605,\n",
+    "        \"Кількість сторінок\": 863\n",
+    "    },\n",
+    "    \"Майстер і Маргарита\": {\n",
+    "        \"Автор\": \"Михайло Булгаков\",\n",
+    "        \"Рік\": 1967,\n",
+    "        \"Кількість сторінок\": 384\n",
+    "    }\n",
+    "}\n",
+    "book_name = input(\"Введіть назву книги: \")\n",
+    "if book_name in library:\n",
+    "    book_info = library[book_name]\n",
+    "    print(f\"Інформація про книгу '{book_name}':\")\n",
+    "    print(f\"Автор: {book_info['Автор']}\")\n",
+    "    print(f\"Рік видання: {book_info['Рік']}\")\n",
+    "    print(f\"Кількість сторінок: {book_info['Кількість сторінок']}\")\n",
+    "else:\n",
+    "    print(\"Такої книги немає в бібліотеці.\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "489119fc-e558-46ee-9d41-070e754ad8f8",
+   "metadata": {},
+   "source": [
+    "Введіть назву книги: >? Дон Кіхот\n",
+    "Інформація про книгу 'Дон Кіхот':\n",
+    "Автор: Мігель де Сервантес\n",
+    "Рік видання: 1605\n",
+    "Кількість сторінок: 863"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "100066ce-c24d-4c0e-9271-bd51124d14dd",
+   "metadata": {},
+   "source": [
+    "## Сумісна робота зі словниками і кортежами"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "86e3b44d-acab-452a-a743-db78a8e5e621",
+   "metadata": {},
+   "source": [
+    "### Приклад 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "3ac53a3b-1789-4cd3-9c8d-48877e25b16f",
+   "metadata": {},
+   "source": [
+    "Написати програму, яка веде облік студентів групи, забезпечуючи можливість зберігати ім’я і прізвище студента та його оцінки, і виводить середній бал по предметах."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "05ff4727-da20-4eeb-8446-0c1aa4b5ab4d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "school_class = {}\n",
+    "\n",
+    "while True:\n",
+    "  name = input(\"Enter the student's name: \")\n",
+    "     if name == '':\n",
+    "         break\n",
+    "\n",
+    "     score = int(input(\"Enter the student's score (0-10): \"))\n",
+    "      if score not in range(0, 11):\n",
+    "       break\n",
+    "\n",
+    "     if name in school_class:\n",
+    "         school_class[name] += (score,)\n",
+    "     else:\n",
+    "         school_class[name] = (score,)\n",
+    "\n",
+    " for name in sorted(school_class.keys()):\n",
+    "     adding = 0\n",
+    "     counter = 0\n",
+    "     for score in school_class[name]:\n",
+    "         adding += score\n",
+    "         counter += 1\n",
+    "     print(name, \":\", adding / counter)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ef82d353-254f-4226-a4be-006f5865b1aa",
+   "metadata": {},
+   "source": [
+    "Enter the student's name: >? Діана\n",
+    "Enter the student's score (0-10): >? 10\n",
+    "Enter the student's name: >? Анастасія\n",
+    "Enter the student's score (0-10): >? 10\n",
+    "Enter the student's name: >? Олександр\n",
+    "Enter the student's score (0-10): >? 9\n",
+    "Enter the student's name: >? Іван\n",
+    "Enter the student's score (0-10): >? 9\n",
+    "Enter the student's name: >? \n",
+    " : 9.0"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d2a4cbe9-1232-407a-9ea5-743c731daa39",
+   "metadata": {},
+   "source": [
+    "### Завдання 4"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "0b7b53eb-c424-4fb6-9c04-931e446c27f7",
+   "metadata": {},
+   "source": [
+    "Напишіть програму, яка створює словник, що містить інформацію про студентів, використовуючи вказані кортежі в якості значень. Кожен ключ – це прізвище студента. Виведіть на екран інформацію про студента, введеного користувачем."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "958ff947-11a4-43b7-b2f5-7c8d110ae634",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "students = {\n",
+    "    \"Мардєєва\": (\"Діна\", 20, \"ІЕЛІІТ\"),\n",
+    "    \"Коваленко\": (\"Анастасія\", 19, \"ІЕЛІІТ\"),\n",
+    "    \"Лашко\": (\"Іван\", 20, \"ІЕЛІІТ\")\n",
+    "}\n",
+    "surname = input(\"Введіть прізвище студента: \")\n",
+    "if surname in students:\n",
+    "    name, age, faculty = students[surname]\n",
+    "    print(f\"Інформація про студента '{surname}':\")\n",
+    "    print(f\"Ім'я: {name}\")\n",
+    "    print(f\"Вік: {age}\")\n",
+    "    print(f\"Факультет: {faculty}\")\n",
+    "else:\n",
+    "    print(\"Студента з таким прізвищем немає в базі.\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "92f839a3-76c6-432c-a2b6-3a34ec48b090",
+   "metadata": {},
+   "source": [
+    "Введіть прізвище студента: >? Мардєєва\n",
+    "Інформація про студента 'Мардєєва':\n",
+    "Ім'я: Діна\n",
+    "Вік: 20\n",
+    "Факультет: ІЕЛІІТ"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "99312d5d-237f-4b3c-8d93-c69a3aaa2649",
+   "metadata": {},
+   "source": [
+    "### Завдання 5"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "d39401a9-1124-4e94-a8db-e2a6357f80b0",
+   "metadata": {},
+   "source": [
+    "Створіть словник, який містить інформацію про більше, ніж один номер телефону для кожного з контактів в телефонній книзі. Ключами будуть імена контактів, а значеннями - список їхніх номерів телефонів. Напишіть функцію, яка дозволяє додати новий номер телефону до списку номерів телефону певного контакту. Потім виведіть на екран список номерів телефонів для всіх контактів."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "0f7b8c6b-bf33-4cbc-ad28-fbb2ac5b2129",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "phone_book = {\n",
+    "    \"Анастасія\": [\"+380687476805\"],\n",
+    "    \"Женя\": [\"+380684809140\"],\n",
+    "    \"Олександр\": [\"+380505444235\"]\n",
+    "}\n",
+    "def add_phone_number(contact_name, phone_number):\n",
+    "    if contact_name in phone_book:\n",
+    "        phone_book[contact_name].append(phone_number)\n",
+    "    else:\n",
+    "        phone_book[contact_name] = [phone_number]\n",
+    "    print(f\"Додано номер {phone_number} до контакту '{contact_name}'.\")\n",
+    "contact_name = input(\"Введіть ім'я контакту: \")\n",
+    "phone_number = input(\"Введіть номер телефону для додавання: \")\n",
+    "add_phone_number(contact_name, phone_number)\n",
+    "print(\"\\nТелефонна книга:\")\n",
+    "for contact, numbers in phone_book.items():\n",
+    "    print(f\"{contact}: {', '.join(numbers)}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a625d7b4-0d3e-4095-87a8-d8e2168684e0",
+   "metadata": {},
+   "source": [
+    "Введіть ім'я контакту: >? Іван\n",
+    "Введіть номер телефону для додавання: >? +380992083944\n",
+    "Додано номер +380992083944 до контакту 'Іван'.\n",
+    "Телефонна книга:\n",
+    "Анастасія: +380687476805\n",
+    "Женя: +380684809140\n",
+    "Олександр: +380505444235\n",
+    "Іван: +380992083944"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "da017c67-9ab3-47c1-af1c-5bd9102750db",
+   "metadata": {},
+   "source": [
+    "## Контрольні запитання"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "367da054-403c-4c66-ad27-264b063db22d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "1. Що виведе наступний код?\n",
+    "\n",
+    "my_tuple = (1, 2, 3)\n",
+    "print(my_tuple[1:])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "e4a2fd92-5b5b-4069-8eec-3c53a548e6b6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "(2, 3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "d9f3717a-be37-44ac-a930-d2325b21481c",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "2. Що виведе наступний код?\n",
+    "\n",
+    "my_dict = {'a': 1, 'b': 2, 'c': 3}\n",
+    "print(my_dict.get('d', 4))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "76f3a186-59cd-4956-9862-06373b0f087d",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "4"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "141b4a43-3835-4b29-bb9a-a238dca0ca53",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "3. Що виведе наступний код?\n",
+    "\n",
+    "my_tuple = (1, 2, 3)\n",
+    "my_tuple[0] = 4\n",
+    "print(my_tuple)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "946cc3ed-35d9-494a-a773-c62d286dca56",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "TypeError"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "3688ee44-23bd-428d-b1ca-302da398d85b",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_tuple = (1, 2, 3)\n",
+    "\n",
+    "# Створення нового кортежу з потрібними змінами\n",
+    "new_tuple = (4,) + my_tuple[1:]\n",
+    "\n",
+    "print(new_tuple)\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "10a4ca36-4ad5-4fc0-869c-5feefb128154",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "(4, 2, 3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "504e6963-7492-4b1b-a810-bba2816e0db6",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "4. Що виведе наступний код?\n",
+    "\n",
+    "my_dict = {'a': 1, 'b': 2, 'c':3}\n",
+    "my_dict.update({'d':4})\n",
+    "print(my_dict)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "385fdd8b-7ddc-42d7-a58d-003268ad0b56",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "{'a': 1, 'b': 2, 'c': 3, 'd': 4}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f9261bd6-5b28-4a66-b84c-2bc0c8f0cf55",
+   "metadata": {},
+   "source": [
+    "## References"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9e996e89-bcf0-445e-a08e-530b35d0d54b",
+   "metadata": {},
+   "source": [
+    "1. Методичні вказівки\n",
+    "2. Лекції"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
